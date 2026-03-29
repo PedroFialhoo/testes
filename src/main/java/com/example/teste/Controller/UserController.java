@@ -13,15 +13,18 @@ import com.example.teste.Service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<?> cadastrarUser(@Valid @RequestBody UserDto userDto){
-        userService.cadastrarUser(userDto);
-
-        return ResponseEntity.ok("Usuário cadastrado");
+        try{
+            userService.cadastrarUser(userDto);
+            return ResponseEntity.ok("Usuário cadastrado");
+        }catch (RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

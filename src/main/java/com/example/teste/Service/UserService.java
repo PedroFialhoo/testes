@@ -14,6 +14,9 @@ public class UserService {
   private UserRepository userRepository;
 
     public boolean cadastrarUser(UserDto userDto){
+      if(userRepository.existsByEmail(userDto.getEmail())){
+        throw new RuntimeException("Email Já cadastrado");
+      }
       User user = new User();
       user.setEmail(userDto.getEmail());
       user.setSenha(userDto.getSenha());

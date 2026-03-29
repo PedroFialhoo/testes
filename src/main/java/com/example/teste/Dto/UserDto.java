@@ -23,7 +23,7 @@ public class UserDto {
     @Size(min = 8)
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).+$", message = "A senha deve conter letra maiúscula, minúscula e número")
     private String senha;
-    @NotBlank
-    @NotEmpty
+    
+    @NotBlank()
     private String nome;
 }
