@@ -26,7 +26,7 @@ public class UserControllerTest {
     @MockitoBean
     private UserService userService;
     
-    // Cadastro de user
+    
     @Test
     void deveCadastrarUsuario() throws Exception {
       String json = """
@@ -62,7 +62,7 @@ public class UserControllerTest {
       verify(userService, never()).cadastrarUser(any());
     }
 
-    // Teste de email
+    
     @Test
     void deveAceitarEmailValido() throws Exception {
       String json = """
@@ -95,7 +95,7 @@ public class UserControllerTest {
                 .content(json))
                 .andExpect(status().isBadRequest());
     }
-    // Teste de senha com menos de oito caracteres
+    
     @Test
     void naoDeveAceitarSenhaCurta() throws Exception {
 
@@ -119,7 +119,7 @@ public class UserControllerTest {
         String json = """
         {
         "nome": "Allisson",
-        "email": "allisson@gmail.com",
+        "email": "thiago@gmail.com",
         "senha": "Senha123@"
         }
         """;
